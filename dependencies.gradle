@@ -1,6 +1,6 @@
 ext {
     kotlin_plugin_version = '1.4.21'
-    javafx_plugin_version = '0.0.8'
+    javafx_plugin_version = '0.0.9'
 
     javafx_version = "11"
     jfoenix_version = '9.0.8'
