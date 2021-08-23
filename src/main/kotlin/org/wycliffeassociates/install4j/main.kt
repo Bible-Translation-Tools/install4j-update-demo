@@ -6,7 +6,7 @@ import com.install4j.api.update.UpdateChecker
 import javafx.geometry.Pos
 import tornadofx.*
 
-const val version = 1
+const val version = 2
 
 fun main() {
     launch<DemoApp>()
@@ -27,6 +27,16 @@ class MainView : View() {
                 if (updateDescriptor.possibleUpdateEntry != null) {
                     dialog {
                         text = updateDescriptor.possibleUpdateEntry.newVersion
+
+                        prefWidth = 100.0
+                        prefHeight = 100.0
+
+                        button("Update") {
+                            setOnAction {
+                                val url = updateDescriptor.possibleUpdateEntry.url
+                                val entry = updateDescriptor.possibleUpdateEntry
+                            }
+                        }
                     }
                 }
             }
