@@ -26,7 +26,7 @@ class MainView : View() {
                 val updateDescriptor = UpdateChecker.getUpdateDescriptor(updateUrl, ApplicationDisplayMode.GUI)
                 if (updateDescriptor.possibleUpdateEntry != null) {
                     dialog {
-                        text = "meep"
+                        text = updateDescriptor.possibleUpdateEntry.newVersion
                     }
                 }
             }
