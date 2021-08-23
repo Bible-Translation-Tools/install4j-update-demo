@@ -7,7 +7,7 @@ import com.install4j.api.update.UpdateChecker
 import javafx.geometry.Pos
 import tornadofx.*
 
-const val version = 2
+const val version = 3
 
 fun main() {
     launch<DemoApp>()
