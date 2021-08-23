@@ -1,5 +1,6 @@
 package org.wycliffeassociates.install4j
 
+import com.install4j.api.launcher.ApplicationLauncher
 import com.install4j.api.launcher.Variables
 import com.install4j.api.update.ApplicationDisplayMode
 import com.install4j.api.update.UpdateChecker
@@ -30,11 +31,18 @@ class MainView : View() {
 
                         prefWidth = 100.0
                         prefHeight = 100.0
+                        alignment = Pos.CENTER
 
                         button("Update") {
                             setOnAction {
-                                val url = updateDescriptor.possibleUpdateEntry.url
-                                val entry = updateDescriptor.possibleUpdateEntry
+                                ApplicationLauncher.launchApplication("99", null, false,
+                                    object : ApplicationLauncher.Callback {
+                                        override fun exited(exitValue: Int) {
+                                        }
+                                        override fun prepareShutdown() {
+                                        }
+                                    }
+                                )
                             }
                         }
                     }
