@@ -1,0 +1,10 @@
+ext {
+    kotlin_plugin_version = '1.4.21'
+    javafx_plugin_version = '0.0.8'
+
+    javafx_version = "11"
+    jfoenix_version = '9.0.8'
+    tornadofx_version = '2.0.0-SNAPSHOT'
+    slf4j_api_version = '2.0.0-alpha1'
+    ikonli_version = '11.3.4'
+}
