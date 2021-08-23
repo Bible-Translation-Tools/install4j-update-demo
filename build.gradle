@@ -2,7 +2,6 @@ buildscript {
     apply from: './dependencies.gradle'
 
     repositories {
-        jcenter()
         maven { url "https://plugins.gradle.org/m2/" }
     }
 
@@ -57,7 +56,6 @@ dependencies {
     implementation "org.kordamp.ikonli:ikonli-material-pack:$ikonli_version"
 
     implementation 'com.install4j:install4j-runtime:9.0.4'
-
 }
 
 group 'org.bibletranslationtools'
@@ -72,6 +70,8 @@ javafx {
     version = "$javafx_version"
     modules = ['javafx.controls', 'javafx.fxml']
 }
+
+mainClassName = "org.wycliffeassociates.install4j.MainKt"
 
 application {
     mainClassName = "org.wycliffeassociates.install4j.MainKt"
