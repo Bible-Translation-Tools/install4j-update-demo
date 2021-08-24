@@ -12,7 +12,7 @@ import javafx.geometry.Pos
 import kotlin.concurrent.thread
 import tornadofx.*
 
-const val version = 3
+const val version = 4
 
 fun main() {
     launch<DemoApp>()
