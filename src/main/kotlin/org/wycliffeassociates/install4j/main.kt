@@ -16,7 +16,7 @@ import javafx.geometry.Pos
 import kotlin.concurrent.thread
 import tornadofx.*
 
-const val version = 8
+const val version = 9
 
 fun main() {
     launch<DemoApp>()
@@ -198,30 +198,44 @@ class UpdateProgressListener(
 
 
     override fun screenActivated(id: String?) {
-        screenActivatedProperty?.set(id)
+        Platform.runLater {
+            screenActivatedProperty?.set(id)
+        }
     }
 
     override fun actionStarted(id: String?) {
-        actionStartedProperty?.set(id)
+        Platform.runLater {
+            actionStartedProperty?.set(id)
+        }
     }
 
     override fun statusMessage(message: String?) {
-        statusMessageProperty?.set(message)
+        Platform.runLater {
+            statusMessageProperty?.set(message)
+        }
     }
 
     override fun detailMessage(message: String?) {
-        detailMessageProperty?.set(message)
+        Platform.runLater {
+            detailMessageProperty?.set(message)
+        }
     }
 
     override fun percentCompleted(value: Int) {
-        percentCompletedProperty?.set(value)
+        Platform.runLater {
+            percentCompletedProperty?.set(value)
+        }
     }
 
     override fun secondaryPercentCompleted(value: Int) {
-        secondaryPercentCompletedProperty?.set(value)
+        Platform.runLater {
+            secondaryPercentCompletedProperty?.set(value)
+        }
     }
 
     override fun indeterminateProgress(indeterminateProgress: Boolean) {
-        indeterminateProgressProperty?.set(indeterminateProgress)
+        Platform.runLater {
+            indeterminateProgressProperty?.set(indeterminateProgress)
+        }
     }
 }
