@@ -86,6 +86,9 @@ class MainView : View() {
         }
 
         vbox {
+
+            alignment = Pos.CENTER
+
             visibleWhen { updateAvailable }
             managedWhen { visibleProperty() }
 
@@ -125,6 +128,9 @@ class MainView : View() {
         }
 
         vbox {
+
+            alignment = Pos.CENTER
+
             visibleWhen { isUpdating }
             managedWhen { visibleProperty() }
 
@@ -143,6 +149,8 @@ class MainView : View() {
         }
 
         vbox {
+            alignment = Pos.CENTER
+
             visibleWhen { updateFinished }
             managedWhen { visibleProperty() }
 
