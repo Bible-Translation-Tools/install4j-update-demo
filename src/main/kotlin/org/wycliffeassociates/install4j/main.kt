@@ -4,15 +4,15 @@ import com.install4j.api.launcher.ApplicationLauncher
 import com.install4j.api.launcher.Variables
 import com.install4j.api.update.ApplicationDisplayMode
 import com.install4j.api.update.UpdateChecker
-import com.install4j.api.update.UpdateSchedule
-import com.install4j.api.update.UpdateScheduleRegistry
 import java.lang.Thread.sleep
 import javafx.beans.property.SimpleBooleanProperty
+import javafx.beans.property.SimpleIntegerProperty
+import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Pos
 import kotlin.concurrent.thread
 import tornadofx.*
 
-const val version = 4
+const val version = 5
 
 fun main() {
     launch<DemoApp>()
@@ -21,6 +21,12 @@ fun main() {
 class DemoApp : App(MainView::class)
 
 class MainView : View() {
+    private val secondaryPercentCompleteProperty = SimpleIntegerProperty(0)
+    private val percentCompleteProperty = SimpleIntegerProperty(0)
+    private val statusMessageProperty = SimpleStringProperty()
+    private val detailedMessageProperty = SimpleStringProperty()
+    private val actionStartedProperty = SimpleStringProperty()
+
     override val root = vbox {
 
         val showProgress = SimpleBooleanProperty(false)
@@ -37,8 +43,19 @@ class MainView : View() {
                     dialog {
                         text = updateDescriptor.possibleUpdateEntry.newVersion
 
+                        textfield { textProperty().bind(statusMessageProperty) }
+                        textfield { textProperty().bind(detailedMessageProperty) }
+                        textfield { textProperty().bind(actionStartedProperty) }
+
                         progressbar {
                             visibleProperty().bind(showProgress)
+                            progressProperty().bind(percentCompleteProperty)
+                        }
+
+                        progressbar {
+                            text = "Secondary"
+                            visibleProperty().bind(showProgress)
+                            progressProperty().bind(secondaryPercentCompleteProperty)
                         }
 
                         prefWidth = 100.0
@@ -47,14 +64,11 @@ class MainView : View() {
 
                         button("Update") {
                             setOnAction {
-                                ApplicationLauncher.launchApplication("140", null, false,
-                                    object : ApplicationLauncher.Callback {
-                                        override fun exited(exitValue: Int) {
-                                        }
-                                        override fun prepareShutdown() {
-                                        }
-                                    }
-                                )
+                                val updater = UpdateLauncher()
+                                val progress = updater.createProgressListener()
+                                println(progress)
+
+                                ApplicationLauncher.launchApplication("140", null, false, updater)
                                 showProgress.set(true)
                                 thread {
                                     while (UpdateChecker.isUpdateScheduled() != true) {
@@ -65,29 +79,50 @@ class MainView : View() {
                                 }
                             }
                         }
-
-//                        button("Update") {
-//                            setOnAction {
-//                                ApplicationLauncher.launchApplication("99", null, false,
-//                                    object : ApplicationLauncher.Callback {
-//                                        override fun exited(exitValue: Int) {
-//                                        }
-//                                        override fun prepareShutdown() {
-//                                        }
-//                                    }
-//                                )
-//                            }
-//                        }
-
-
-//                        button("Update") {
-//                            UpdateChecker.executeScheduledUpdate(null, true, null)
-//                        }
                     }
                 }
             }
         }
     }
 
+    inner class UpdateLauncher : ApplicationLauncher.Callback {
+        override fun exited(exitValue: Int) {
 
+        }
+
+        override fun prepareShutdown() {
+        }
+
+        override fun createProgressListener(): ApplicationLauncher.ProgressListener {
+            return ProgressListener()
+        }
+    }
+
+    inner class ProgressListener : ApplicationLauncher.ProgressListener {
+        override fun screenActivated(id: String?) {
+        }
+
+        override fun actionStarted(id: String?) {
+            actionStartedProperty.set(id)
+        }
+
+        override fun statusMessage(message: String?) {
+            statusMessageProperty.set(message)
+        }
+
+        override fun detailMessage(message: String?) {
+            detailedMessageProperty.set(message)
+        }
+
+        override fun percentCompleted(value: Int) {
+            percentCompleteProperty.set(value)
+        }
+
+        override fun secondaryPercentCompleted(value: Int) {
+            secondaryPercentCompleteProperty.set(value)
+        }
+
+        override fun indeterminateProgress(indeterminateProgress: Boolean) {
+        }
+    }
 }
