@@ -1,0 +1,259 @@
+* {
+    /*Primary Color */
+    -wa-primary: #015AD9;
+    -wa-primary-05: #015AD90D;
+    -wa-primary-10: #015AD91A;
+    -wa-primary-20: #015AD933;
+    -wa-primary-light: #CEE6FF;
+    -wa-primary-dark: #00377C;
+
+    /*Accent Color */
+    -wa-accent: #FFB100;
+    -wa-accent-light: #FFD671;
+    -wa-accent-dark: #9E6600;
+
+    /* Gradients */
+    -wa-primary-gradient: linear-gradient(to top, -wa-primary, #267CF7);
+    -wa-cta-gradient: linear-gradient(to bottom, -wa-accent-light, -wa-accent);
+
+    /* Neutral Colors */
+    -wa-gray-darker: rgba(26,26,26,1); /* Base text color and icon hover color */
+    -wa-gray-dark: rgba(26,26,26,0.8); /* active icon */
+    -wa-gray: rgba(26,26,26,0.6);  /* Disabled button text */
+    -wa-gray-light: rgba(26,26,26,0.4);
+    -wa-gray-lighter: rgba(26,26,26,0.1); /* used for disabled backgrounds, light borders */
+    -wa-white: #ffffff;
+    -wa-white-05: rgba(255,255,255,0.05);
+    -wa-white-10: rgba(255,255,255,0.1);
+    -wa-white-20: rgba(255,255,255,0.2);
+    -wa-white-30: rgba(255,255,255,0.3);
+    -wa-white-40: rgba(255,255,255,0.4);
+    -wa-white-50: rgba(255,255,255,0.5);
+    -wa-white-60: rgba(255,255,255,0.6);
+    -wa-black: rgb(0, 21, 51);
+    -wa-black-05: rgba(0, 21, 51,0.05);
+    -wa-black-10: rgba(0, 21, 51,0.1);
+    -wa-black-20: rgba(0, 21, 51,0.2);
+    -wa-black-30: rgba(0, 21, 51,0.3);
+    -wa-black-40: rgba(0, 21, 51,0.4);
+    -wa-black-50: rgba(0, 21, 51,0.5);
+    -wa-black-60: rgba(0, 21, 51,0.6);
+    -wa-transparent: rgba(255,255,255,0);
+    -wa-background: #F7FAFF;
+
+    -wa-red: rgb(227, 42, 42);    /* this is used as a error indicator */
+    -wa-red-dark: rgb(158, 34, 34);
+    -wa-red-light: rgb(255, 61, 61);
+    -wa-red-05: rgba(227, 42, 42, 0.05);
+    -wa-red-05-noalpha: rgb(255, 245, 245);
+    -wa-red-10: rgba(227, 42, 42, 0.1);
+    -wa-red-10-noalpha: rgb(255, 232, 232);
+    -wa-red-20: rgba(227, 42, 42, 0.2);
+    -wa-red-30: rgba(227, 42, 42, 0.3);
+
+    -wa-purple: #8B00DE;
+    -wa-purple-dark: #430193;
+    -wa-purple-light: rgba(141, 0, 222, 0.3);
+
+    -wa-orange: #FF342E;   /* this color is used as an error indicator */
+    -wa-orange-dark: #900300;
+    -wa-orange-light: rgba(255, 53, 46, 0.3);
+
+/* -------------------- Shadows --------------------*/
+    -wa-level0: dropshadow(gaussian, rgba(0, 0, 0, 0.0), 0, 0, 0, 0); /* No Shadow */
+    -wa-level1: dropshadow(gaussian, rgba(0, 0, 0, 0.24), 2, 0, 0, 1); /* [blur], [color], [radius], [choke], [x], [y] */
+    -wa-level2: dropshadow(gaussian, rgba(0,0,0,0.23), 6, 0, 0, 3);
+    -wa-level3: dropshadow(gaussian, rgba(0,0,0,0.23), 6, 0, 0, 6);
+    -wa-level4: dropshadow(gaussian, rgba(0,0,0,0.22), 10, 0, 0, 10);
+    -wa-level5: dropshadow(gaussian, rgba(0,0,0,0.22), 12, 0, 0, 15); /* Highest Priorty / Shadow */
+
+    -fx-font-family: "noto sans";
+}
+
+
+.app-drawer__content {
+    -fx-pref-width: 400px;
+    -fx-background-color: -wa-white;
+    -fx-effect: -wa-level5;
+}
+
+.updater__container {
+    -fx-spacing: 10px;
+}
+
+.updater__title {
+    -fx-font-size: 36px;
+}
+
+.updater__subtitle {
+    -fx-font-weight: bold;
+    -fx-font-size: 26px;
+}
+
+.updater__text {
+    -fx-font-size: 20px;
+    -fx-wrap-text: true;
+}
+
+.updater__text--link {
+    -fx-font-size: 20px;
+    -fx-text-fill: -wa-primary;
+    -fx-underline: true;
+    -fx-cursor: hand;
+    -fx-wrap-text: true;
+    -fx-border-style: none;
+    -fx-border-width: 0px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.btn--primary {
+    -fx-background-color: -wa-primary-gradient;
+    -fx-effect: -wa-level2;
+    -fx-text-fill: -wa-white;
+    -fx-border-width: 2px;
+    -fx-border-color: -wa-primary-dark;
+    -fx-underline: true;
+    -fx-font-size: 20px;
+}
+
+.btn--primary .ikonli-font-icon {
+    -fx-fill: -wa-white;
+    -fx-font-size: 20px;
+}
+
+.btn--primary:hover {
+    -fx-background-color: -wa-primary;
+    -fx-effect: -wa-level1;
+    -fx-underline: false;
+}
+
+.btn--primary:pressed {
+    -fx-background-color: -wa-primary-dark;
+    -fx-effect: -wa-level1;
+    -fx-underline: false;
+}
+
+.btn--primary:disabled {
+    -fx-background-color: -wa-gray-lighter;
+    -fx-border-width: 0px;
+    -fx-text-fill: -wa-black-60;
+    -fx-effect: -wa-level0;
+    -fx-cursor: disappear;
+    -fx-underline: false;
+}
+
+.btn--primary:disabled .ikonli-font-icon {
+    -fx-fill: -wa-black-60;
+}
+
+/* -------------- Call to Action Button -------------- */
+/*  This is the highest priority button and should always
+/*  highlight the most desireable action the user would take.
+/*  Only 1 CTA button should be used on a page. */
+.btn--cta {
+    -fx-background-color: -wa-cta-gradient;
+    -fx-effect: -wa-level2;
+    -fx-border-color: -wa-accent-dark;
+    -fx-border-width: 2px;
+    -fx-text-fill: -wa-black;
+    -fx-underline: true;
+    -fx-font-size: 20px;
+    -jfx-disable-visual-focus: true;
+}
+.btn--cta .ikonli-font-icon {
+    -fx-font-size: 20px;
+    -fx-fill: -wa-black;
+}
+.btn--cta:hover {
+    -fx-background-color: -wa-accent;
+    -fx-effect: -wa-level1;
+    -fx-underline: false;
+
+}
+.btn--cta:disabled {
+    -fx-background-color: -wa-gray-lighter;
+    -fx-text-fill: -wa-gray;
+    -fx-icon-color: -wa-gray;
+    -fx-effect: -wa-level0;
+    -fx-cursor: disappear;
+    -fx-opacity: 1;
+}
+
+/* -------------- Secondary Button -------------- */
+.btn--secondary {
+    -fx-background-color: transparent;
+    -fx-border-width: 2px;
+    -fx-border-color: -wa-primary;
+    -fx-text-fill: -wa-primary;
+    -fx-font-size: 20px;
+    -fx-underline: true;
+    -jfx-disable-visual-focus: true;
+}
+.btn--secondary .ikonli-font-icon {
+    -fx-font-size: 20px;
+    -fx-fill: -wa-primary;
+}
+.btn--secondary:hover {
+    -fx-background-color: -wa-primary-05;
+    -fx-border-color: -wa-primary-dark;
+    -fx-text-fill: -wa-primary-dark;
+    -fx-underline: false;
+}
+.btn--secondary:hover .ikonli-font-icon {
+    -fx-fill: -wa-primary-dark;
+}
+.btn--secondary:pressed {
+    -fx-background-color: -wa-primary-10;
+    -fx-border-color: -wa-primary-dark;
+    -fx-text-fill: -wa-primary-dark;
+    -fx-underline: false;
+}
+.btn--secondary:pressed .ikonli-font-icon {
+    -fx-fill: -wa-primary-dark;
+}
+.btn--secondary:disabled {
+    -fx-cursor: disappear;
+    -fx-text-fill: -wa-gray;
+    -fx-border-color: -wa-gray-light;
+    -fx-border-width: 2px;
+    -fx-underline: false;
+}
+.btn--secondary:disabled .ikonli-font-icon {
+    -fx-fill: -wa-gray-light;
+}
+.btn--borderless {
+    -fx-border-width: 0;
+}
+
+/* -------------- Tertiary Button -------------- */
+/* This button is very rarely used
+/* Typically only found in misc dialogs or on very heavy screens */
+.btn--tertiary {
+    -fx-background-color: transparent;
+    -fx-border-width: 0px;
+    -fx-text-fill: -wa-primary;
+    -fx-icon-color: -wa-primary;
+}
+.btn--tertiary:hover {
+    -fx-background-color: -wa-primary-light;
+    -fx-text-fill: -wa-primary-dark;
+    -fx-icon-color: -wa-primary-dark;
+}
+.btn--tertiary:disabled {
+    -fx-cursor: disappear;
+    -fx-text-fill: -wa-gray;
+    -fx-icon-color: -wa-gray;
+    -fx-border-width: 0px;
+    -fx-background-color: transparent;
+}
